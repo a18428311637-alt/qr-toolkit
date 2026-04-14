@@ -10,7 +10,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win",
+    "dist:portable": "electron-builder --win portable"
   },
   "build": {
     "appId": "com.qr-toolkit.app",
@@ -23,18 +24,15 @@
       "owner": "a18428311637-alt",
       "repo": "qr-toolkit"
     },
+    "compression": "maximum",
     "win": {
       "target": [
         {
-          "target": "nsis",
+          "target": "portable",
           "arch": ["x64"]
         }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "artifactName": "${productName}-Setup-${version}.${ext}"
+      ],
+      "artifactName": "${productName}-${version}-Portable.${ext}"
     },
     "files": [
       "main.js",
@@ -42,7 +40,34 @@
       "index.html",
       "renderer.js",
       "style.css",
-      "node_modules/**/*"
+      {
+        "from": "node_modules",
+        "to": "node_modules",
+        "filter": [
+          "**/*",
+          "!**/README*",
+          "!**/readme*",
+          "!**/CHANGELOG*",
+          "!**/changelog*",
+          "!**/HISTORY*",
+          "!**/LICENSE*",
+          "!**/LICENCE*",
+          "!**/*.md",
+          "!**/*.markdown",
+          "!**/*.ts",
+          "!**/*.d.ts",
+          "!**/*.map",
+          "!**/test/**",
+          "!**/tests/**",
+          "!**/__tests__/**",
+          "!**/spec/**",
+          "!**/.eslintrc*",
+          "!**/.prettierrc*",
+          "!**/docs/**",
+          "!**/examples/**",
+          "!**/.github/**"
+        ]
+      }
     ]
   },
   "keywords": ["qrcode", "electron", "jsqr"],
