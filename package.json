@@ -2,6 +2,11 @@
   "name": "qr-toolkit",
   "version": "1.0.0",
   "description": "二维码生成与识别工具",
+  "author": "a18428311637-alt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a18428311637-alt/qr-toolkit.git"
+  },
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -15,8 +20,8 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "",
-      "repo": ""
+      "owner": "a18428311637-alt",
+      "repo": "qr-toolkit"
     },
     "win": {
       "target": [
